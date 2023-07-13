@@ -10,21 +10,19 @@ import java.util.Map;
 
 @Repository
 public class StudentRepository {
-    Map<String,Student> studentMap;
-    Map<String, Teacher> teacherMap;
+    Map<String,Student> studentMap = new HashMap<>();
+    Map<String, Teacher> teacherMap =  new HashMap<>();
 
-    Map<String,String> studentTeacherMap;
+    Map<String,String> studentTeacherMap =  new HashMap<>();
 
     public StudentRepository() {
-        this.studentMap = new HashMap<>();
-        this.teacherMap =  new HashMap<>();
-        this.studentTeacherMap =  new HashMap<>();
+
     }
 
     public boolean addStudent(Student student) {
 
-        if(student==null)
-            return false;
+//        if(student==null)
+//            return false;
 
         studentMap.put(student.getName(), student);
         return true;
@@ -32,8 +30,8 @@ public class StudentRepository {
 
     public boolean addTeacher(Teacher teacher) {
 
-        if(teacher==null)
-            return false;
+//        if(teacher==null)
+//            return false;
 
          teacherMap.put(teacher.getName(),teacher);
          return true;
@@ -41,8 +39,8 @@ public class StudentRepository {
 
     public boolean addStudentTeacherPair(String student, String teacher) {
 
-        if(teacher==null || student==null)
-            return false;
+//        if(teacherMap.get(teacher)==null || studentMap.get(student) ==null)
+//            return false;
 
         studentTeacherMap.put(student,teacher);
         Teacher t = teacherMap.get(teacher);
@@ -51,15 +49,15 @@ public class StudentRepository {
     }
 
     public Student getStudentByName(String name) {
-        if(!studentMap.containsKey(name))
-            return null;
+//        if(!studentMap.containsKey(name))
+//            return null;
 
         return  studentMap.get(name);
     }
 
     public Teacher getTeacherByName(String name) {
-        if(!teacherMap.containsKey(name))
-            return null;
+//        if(!teacherMap.containsKey(name))
+//            return null;
 
         return teacherMap.get(name);
     }
@@ -85,9 +83,9 @@ public class StudentRepository {
     }
 
     public void deleteTeacherByName(String teacher) {
-        if(!teacherMap.containsKey(teacher)){
-            return;
-        }
+//        if(!teacherMap.containsKey(teacher)){
+//            return;
+//        }
         teacherMap.remove(teacher);
         for(String student: studentTeacherMap.keySet()){
             if(studentTeacherMap.get(student).equals(teacher))
