@@ -26,6 +26,9 @@ public class StudentController {
     public ResponseEntity<String> addStudent(@RequestBody Student student){
         boolean res = studentService.addStudent(student);
 
+        if(!res)
+            return new ResponseEntity<>("Failed",HttpStatus.BAD_REQUEST);
+
         return new ResponseEntity<>("New student added successfully", HttpStatus.CREATED);
     }
 
@@ -33,6 +36,8 @@ public class StudentController {
     public ResponseEntity<String> addTeacher(@RequestBody Teacher teacher){
 
         boolean res = studentService.addTeacher(teacher);
+        if(!res)
+            return new ResponseEntity<>("Failed",HttpStatus.BAD_REQUEST);
 
         return new ResponseEntity<>("New teacher added successfully", HttpStatus.CREATED);
     }
@@ -40,6 +45,10 @@ public class StudentController {
     @PutMapping("/add-student-teacher-pair")
     public ResponseEntity<String> addStudentTeacherPair(@RequestParam String student, @RequestParam String teacher){
         boolean res = studentService.addStudentTeacherPair(student,teacher);
+
+        if(!res)
+            return new ResponseEntity<>("Failed",HttpStatus.BAD_REQUEST);
+
         return new ResponseEntity<>("New student-teacher pair added successfully", HttpStatus.CREATED);
     }
 
