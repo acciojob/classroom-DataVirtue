@@ -88,8 +88,10 @@ public class StudentRepository {
 //        }
         teacherMap.remove(teacher);
         for(String student: studentTeacherMap.keySet()){
-            if(studentTeacherMap.get(student).equals(teacher))
+            if(studentTeacherMap.get(student).equals(teacher)) {
                 studentTeacherMap.remove(student); // teacher no longer exisits
+                studentMap.remove(student);
+            }
         }
 
 
@@ -98,5 +100,6 @@ public class StudentRepository {
     public void deleteAllTeachers() {
         teacherMap.clear();
         studentTeacherMap.clear();
+        studentMap.clear();
     }
 }
