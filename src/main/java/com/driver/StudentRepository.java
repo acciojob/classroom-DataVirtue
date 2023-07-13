@@ -99,7 +99,11 @@ public class StudentRepository {
 
     public void deleteAllTeachers() {
         teacherMap.clear();
+
+        for(String student: studentTeacherMap.keySet()){
+            studentMap.remove(student);
+        }
         studentTeacherMap.clear();
-        studentMap.clear();
+
     }
 }
